@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>From</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style type="text/css">
+		:root {
+		  --hpink: hotpink;
+		  --lgreen: #58d68d;
+		}
+		body {
+
+			background-color: #ececec;
+		}
+		#main {
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
+			height: 500px;
+			padding-top: 50px;
+		}
+		#form-content {
+			padding: 30px 0px 30px 0px;
+			background-color: #fff;
+			width: 480px;
+			height: auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			border-radius: 25px;
+			box-shadow:  8px 8px 18px #8b8b8b,
+			             -12px -12px 18px #ffffff;
+		}
+		textarea, input {
+			width: 80%;
+			border: 1px solid var(--hpink);
+			padding: 10px 10px 10px 10px;
+			margin: 10px 10px 10px 10px;
+			border-radius: 25px;
+			color: var(--hpink);
+			font-size: 20px;
+			padding-left: 30px;
+		}
+		textarea:focus, input:focus {
+			outline: 1px solid var(--hpink);
+			box-shadow: 0px 0px 13px var(--hpink);
+		}
+		::placeholder {
+			margin-left: 10px;
+			pading-left: 10px;
+		}
+		button {
+			background-color: var(--hpink);
+			border: 1px solid var(--hpink);
+			cursor: pointer;
+			padding: 10px;
+			border-radius: 25px;
+			width: 120px;
+			color: #fff;
+			font-size: 18px;
+		}
+		button:hover {
+			color: var(--hpink);
+			background-color: #fff;
+		}
+		.color-nav {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			padding: 10px;
+			height: 130px;
+			overflow-y: scroll;
+		}
+		.color {
+			width: 50px;
+			height: 50px;
+			margin: 10px;
+			cursor: pointer;
+		}
+		.d-inline {
+			display: flex;
+			flex-direction: row;
+		}
+		input[type="checkbox"] {
+			cursor: pointer;
+			-webkit-appearance: none;
+			height: 20px;
+			width: 20px;
+			border-radius: 0px;
+			padding: 0px;
+		}
+		.radio {
+			position: relative;
+			display: inline-block;
+			vertical-align: middle;
+			padding-left: 30px;
+			cursor: pointer;
+		}
+		.radio + .radio {
+			margin-left: 20px;
+		}
+		.radio input[type="radio"] {
+			display: none;
+		}
+		.radio span {
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 20px;
+			width: 20px;
+			display: block;
+			border: 1px solid var(--hpink);
+			border-radius: 50px;
+		}
+		.radio span:after {
+			content: "";
+			height: 15px;
+			width: 15px;
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background: var(--hpink);
+			border-radius: 50px;
+			transform: translate(-50%,-50%) scale(0);
+		}
+		.radio input[type="radio"]:checked ~ span:after {
+			transform: translate(-50%,-50%) scale(1);
+
+		}
+	</style>
+</head>
+<body>
+	<div class="color-nav">
+		<div id="red" class="color" style="background-color: red;"></div>
+		<div id="green" class="color" style="background-color: green;"></div>
+		<div id="hotpink" class="color" style="background-color: hotpink;"></div>
+		<div id="YellowGreen" class="color" style="background-color: YellowGreen;"></div>
+		<div id="Turquoise" class="color" style="background-color: Turquoise;"></div>
+		<div id="Violet" class="color" style="background-color: Violet;"></div>
+		<div id="Wheat" class="color" style="background-color: Wheat;"></div>
+		<div id="White" class="color" style="background-color: White;"></div>
+		<div id="WhiteSmoke" class="color" style="background-color: WhiteSmoke;"></div>
+		<div id="Yellow" class="color" style="background-color: Yellow;"></div>
+		<div id="SkyBlue" class="color" style="background-color: SkyBlue;"></div>
+		<div id="SlateBlue" class="color" style="background-color: SlateBlue;"></div>
+		<div id="SlateGray" class="color" style="background-color: SlateGray;"></div>
+		<div id="SlateGrey" class="color" style="background-color: SlateGrey;"></div>
+		<div id="Snow" class="color" style="background-color: Snow;"></div>
+		<div id="SpringGreen" class="color" style="background-color: SpringGreen;"></div>
+		<div id="SteelBlue" class="color" style="background-color: SteelBlue;"></div>
+		<div id="Tan" class="color" style="background-color: Tan;"></div>
+		<div id="Teal" class="color" style="background-color: Teal;"></div>
+		<div id="Thistle" class="color" style="background-color: Thistle;"></div>
+		<div id="Tomato" class="color" style="background-color: Tomato;"></div>
+		<div id="Purple" class="color" style="background-color: Purple;"></div>
+		<div id="RebeccaPurple" class="color" style="background-color: RebeccaPurple;"></div>
+		<div id="Red" class="color" style="background-color: Red;"></div>
+		<div id="RosyBrown" class="color" style="background-color: RosyBrown;"></div>
+		<div id="RoyalBlue" class="color" style="background-color: RoyalBlue;"></div>
+		<div id="SaddleBrown" class="color" style="background-color: SaddleBrown;"></div>
+		<div id="Salmon" class="color" style="background-color: Salmon;"></div>
+		<div id="SandyBrown" class="color" style="background-color: SandyBrown;"></div>
+		<div id="SeaGreen" class="color" style="background-color: SeaGreen;"></div>
+		<div id="SeaShell" class="color" style="background-color: SeaShell;"></div>
+		<div id="Sienna" class="color" style="background-color: Sienna;"></div>
+		<div id="Silver" class="color" style="background-color: Silver;"></div>
+		<div id="AliceBlue" class="color" style="background-color: AliceBlue;"></div>
+		<div id="AntiqueWhite" class="color" style="background-color: AntiqueWhite;"></div>
+		<div id="Aqua" class="color" style="background-color: Aqua;"></div>
+		<div id="Aquamarine" class="color" style="background-color: Aquamarine;"></div>
+		<div id="Azure" class="color" style="background-color: Azure;"></div>
+		<div id="Beige" class="color" style="background-color: Beige;"></div>
+		<div id="Bisque" class="color" style="background-color: Bisque;"></div>
+		<div id="Black" class="color" style="background-color: Black;"></div>
+		<div id="BlanchedAlmond" class="color" style="background-color: BlanchedAlmond;"></div>
+		<div id="Blue" class="color" style="background-color: Blue;"></div>
+		<div id="BlueViolet" class="color" style="background-color: BlueViolet;"></div>
+		<div id="Brown" class="color" style="background-color: Brown;"></div>
+		<div id="BurlyWood" class="color" style="background-color: BurlyWood;"></div>
+		<div id="CadetBlue" class="color" style="background-color: CadetBlue;"></div>
+		<div id="Chartreuse" class="color" style="background-color: Chartreuse;"></div>
+		<div id="Chocolate" class="color" style="background-color: Chocolate;"></div>
+		<div id="Coral" class="color" style="background-color: Coral;"></div>
+		<div id="CornflowerBlue" class="color" style="background-color: CornflowerBlue;"></div>
+		<div id="Cornsilk" class="color" style="background-color: Cornsilk;"></div>
+		<div id="Crimson" class="color" style="background-color: Crimson;"></div>
+		<div id="Cyan" class="color" style="background-color: Cyan;"></div>
+		<div id="DarkBlue" class="color" style="background-color: DarkBlue;"></div>
+		<div id="DarkCyan" class="color" style="background-color: DarkCyan;"></div>
+		<div id="DarkGoldenRod" class="color" style="background-color: DarkGoldenRod;"></div>
+		<div id="DarkGray" class="color" style="background-color: DarkGray;"></div>
+		<div id="DarkGrey" class="color" style="background-color: DarkGrey;"></div>
+		<div id="DarkGreen" class="color" style="background-color: DarkGreen;"></div>
+		<div id="DarkKhaki" class="color" style="background-color: DarkKhaki;"></div>
+		<div id="DarkMagenta" class="color" style="background-color: DarkMagenta;"></div>
+		<div id="DarkOliveGreen" class="color" style="background-color: DarkOliveGreen;"></div>
+		<div id="DarkOrange" class="color" style="background-color: DarkOrange;"></div>
+		<div id="DarkOrchid" class="color" style="background-color: DarkOrchid;"></div>
+		<div id="DarkRed" class="color" style="background-color: DarkRed;"></div>
+		<div id="DarkSalmon" class="color" style="background-color: DarkSalmon;"></div>
+		<div id="DarkSeaGreen" class="color" style="background-color: DarkSeaGreen;"></div>
+		<div id="DarkSlateBlue" class="color" style="background-color: DarkSlateBlue;"></div>
+		<div id="DarkSlateGray" class="color" style="background-color: DarkSlateGray;"></div>
+		<div id="DarkSlateGrey" class="color" style="background-color: DarkSlateGrey;"></div>
+		<div id="DarkTurquoise" class="color" style="background-color: DarkTurquoise;"></div>
+		<div id="DarkViolet" class="color" style="background-color: DarkViolet;"></div>
+		<div id="DeepPink" class="color" style="background-color: DeepPink;"></div>
+		<div id="DeepSkyBlue" class="color" style="background-color: DeepSkyBlue;"></div>
+		<div id="DimGray" class="color" style="background-color: DimGray;"></div>
+		<div id="DimGrey" class="color" style="background-color: DimGrey;"></div>
+		<div id="DodgerBlue" class="color" style="background-color: DodgerBlue;"></div>
+		<div id="FireBrick" class="color" style="background-color: FireBrick;"></div>
+		<div id="FloralWhite" class="color" style="background-color: FloralWhite;"></div>
+		<div id="ForestGreen" class="color" style="background-color: ForestGreen;"></div>
+		<div id="Fuchsia" class="color" style="background-color: Fuchsia;"></div>
+		<div id="Gainsboro" class="color" style="background-color: Gainsboro;"></div>
+		<div id="GhostWhite" class="color" style="background-color: GhostWhite;"></div>
+		<div id="Gold" class="color" style="background-color: Gold;"></div>
+		<div id="GoldenRod" class="color" style="background-color: GoldenRod;"></div>
+		<div id="Gray" class="color" style="background-color: Gray;"></div>
+		<div id="Grey" class="color" style="background-color: Grey;"></div>
+		<div id="Green" class="color" style="background-color: Green;"></div>
+		<div id="GreenYellow" class="color" style="background-color: GreenYellow;"></div>
+		<div id="HoneyDew" class="color" style="background-color: HoneyDew;"></div>
+		<div id="HotPink" class="color" style="background-color: HotPink;"></div>
+		<div id="IndianRed" class="color" style="background-color: IndianRed;"></div>
+		<div id="Indigo" class="color" style="background-color: Indigo;"></div>
+		<div id="Ivory" class="color" style="background-color: Ivory;"></div>
+		<div id="Khaki" class="color" style="background-color: Khaki;"></div>
+		<div id="Lavender" class="color" style="background-color: Lavender;"></div>
+		<div id="LavenderBlush" class="color" style="background-color: LavenderBlush;"></div>
+		<div id="LawnGreen" class="color" style="background-color: LawnGreen;"></div>
+		<div id="LemonChiffon" class="color" style="background-color: LemonChiffon;"></div>
+		<div id="LightBlue" class="color" style="background-color: LightBlue;"></div>
+		<div id="LightCoral" class="color" style="background-color: LightCoral;"></div>
+		<div id="LightCyan" class="color" style="background-color: LightCyan;"></div>
+		<div id="LightGoldenRodYellow" class="color" style="background-color: LightGoldenRodYellow;"></div>
+		<div id="LightGray" class="color" style="background-color: LightGray;"></div>
+		<div id="LightGrey" class="color" style="background-color: LightGrey;"></div>
+		<div id="LightGreen" class="color" style="background-color: LightGreen;"></div>
+		<div id="LightPink" class="color" style="background-color: LightPink;"></div>
+		<div id="LightSalmon" class="color" style="background-color: LightSalmon;"></div>
+		<div id="LightSeaGreen" class="color" style="background-color: LightSeaGreen;"></div>
+		<div id="LightSkyBlue" class="color" style="background-color: LightSkyBlue;"></div>
+		<div id="LightSlateGray" class="color" style="background-color: LightSlateGray;"></div>
+		<div id="LightSlateGrey" class="color" style="background-color: LightSlateGrey;"></div>
+		<div id="LightSteelBlue" class="color" style="background-color: LightSteelBlue;"></div>
+		<div id="LightYellow" class="color" style="background-color: LightYellow;"></div>
+		<div id="Lime" class="color" style="background-color: Lime;"></div>
+		<div id="LimeGreen" class="color" style="background-color: LimeGreen;"></div>
+		<div id="Linen" class="color" style="background-color: Linen;"></div>
+		<div id="Magenta" class="color" style="background-color: Magenta;"></div>
+		<div id="Maroon" class="color" style="background-color: Maroon;"></div>
+		<div id="MediumAquaMarine" class="color" style="background-color: MediumAquaMarine;"></div>
+		<div id="MediumBlue" class="color" style="background-color: MediumBlue;"></div>
+		<div id="MediumOrchid" class="color" style="background-color: MediumOrchid;"></div>
+		<div id="MediumPurple" class="color" style="background-color: MediumPurple;"></div>
+		<div id="MediumSeaGreen" class="color" style="background-color: MediumSeaGreen;"></div>
+		<div id="MediumSlateBlue" class="color" style="background-color: MediumSlateBlue;"></div>
+		<div id="MediumSpringGreen" class="color" style="background-color: MediumSpringGreen;"></div>
+		<div id="MediumTurquoise" class="color" style="background-color: MediumTurquoise;"></div>
+		<div id="MediumVioletRed" class="color" style="background-color: MediumVioletRed;"></div>
+		<div id="MidnightBlue" class="color" style="background-color: MidnightBlue;"></div>
+		<div id="MintCream" class="color" style="background-color: MintCream;"></div>
+		<div id="MistyRose" class="color" style="background-color: MistyRose;"></div>
+		<div id="Moccasin" class="color" style="background-color: Moccasin;"></div>
+		<div id="NavajoWhite" class="color" style="background-color: NavajoWhite;"></div>
+		<div id="Navy" class="color" style="background-color: Navy;"></div>
+		<div id="OldLace" class="color" style="background-color: OldLace;"></div>
+		<div id="Olive" class="color" style="background-color: Olive;"></div>
+		<div id="OliveDrab" class="color" style="background-color: OliveDrab;"></div>
+		<div id="Orange" class="color" style="background-color: Orange;"></div>
+		<div id="OrangeRed" class="color" style="background-color: OrangeRed;"></div>
+		<div id="Orchid" class="color" style="background-color: Orchid;"></div>
+		<div id="PaleGoldenRod" class="color" style="background-color: PaleGoldenRod;"></div>
+		<div id="PaleGreen" class="color" style="background-color: PaleGreen;"></div>
+		<div id="PaleTurquoise" class="color" style="background-color: PaleTurquoise;"></div>
+		<div id="PaleVioletRed" class="color" style="background-color: PaleVioletRed;"></div>
+		<div id="PapayaWhip" class="color" style="background-color: PapayaWhip;"></div>
+		<div id="PeachPuff" class="color" style="background-color: PeachPuff;"></div>
+		<div id="Peru" class="color" style="background-color: Peru;"></div>
+		<div id="Pink" class="color" style="background-color: Pink;"></div>
+		<div id="Plum" class="color" style="background-color: Plum;"></div>
+		<div id="PowderBlue" class="color" style="background-color: PowderBlue;"></div>
+	</div>
+<div id="main">
+	<div id="form-content">
+		<input type="text" name="" placeholder="name">
+		<input type="password" name="" placeholder="password">
+		<textarea></textarea>
+		<div class="d-inline">
+			<label class="radio">
+				<input type="radio" name="sameradio">
+				Select One
+				<span></span>
+			</label>
+			<label class="radio">
+				<input type="radio" name="sameradio">
+				Select Two
+				<span></span>
+			</label>
+		</div>
+		<div class="d-inline">
+			<input type="checkbox" name="samecheckbox">
+			<input type="checkbox" name="samecheckbox">
+		</div>
+		<button>Submit</button>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	$('.color').click(function (e) {
+		e.preventDefault();
+		$(':root').css('--hpink', this.id);
+	});
+	
+</script>
+</html>
